@@ -12,7 +12,7 @@ using Grpc.Core;
 public class GrpcClient : MonoBehaviour
 {
     [Header("UI")]
-    public TMP_InputField inputField;
+    public InputField inputField;
     public Button sendButton;
     public Transform chatContent;
     public GameObject chatMessagePrefab;
@@ -39,10 +39,10 @@ public class GrpcClient : MonoBehaviour
 
         sendButton.onClick.AddListener(OnSendButtonClick);
 
-        await StartStreaming();
+        await StartGrpcStreaming();
     }
 
-    async Task StartStreaming()
+    async Task StartGrpcStreaming()
     {
         cts = new CancellationTokenSource();
         streamingCall = client.Chat(cancellationToken: cts.Token);
@@ -71,11 +71,11 @@ public class GrpcClient : MonoBehaviour
     void OnSendButtonClick()
     {
         if (string.IsNullOrEmpty(inputField.text)) return;
-        SendMessage(inputField.text);
+        SendGrpcMessage(inputField.text);
         inputField.text = "";
     }
 
-    async void SendMessage(string message)
+    async void SendGrpcMessage(string message)
     {
         var chatMsg = new ChatMessage
         {
