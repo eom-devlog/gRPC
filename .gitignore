@@ -26,8 +26,6 @@ ProjectSettings/
 .DS_Store
 Thumbs.db
 
-
-Assets/Scenes/
-Assets/Settings/
-Assets/TutorialInfo/
+Assets/Settings
+Assets/TutorialInfo
 Assets/InputSystem_Actions
